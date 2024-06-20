@@ -31,8 +31,7 @@ multiparadigma se erige como ideal para que el alumno pueda realizar una transic
     2.2. Sub item
 
 
-### 2. Paradigma Reactivo
-[### 2. Paradigma Reactivo](#chapter-1)
+### 2. Paradigma Reactivo [contenido](#chapter-1)
 
     2.1. Sub item
     2.2. Sub item
