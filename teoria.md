@@ -31,7 +31,7 @@ multiparadigma se erige como ideal para que el alumno pueda realizar una transic
     2.2. Sub item
 
 
-### 2. Paradigma Reactivo [contenido](#chapter-1)
+### 2. Paradigma Reactivo [contenido](#paradigma-reactivo)
 
     2.1. Sub item
     2.2. Sub item
@@ -136,8 +136,7 @@ Ya no tenemos una doble API para scale up y scale out.
 
 
 
-### <a id="chapter-1"></a>2. Paradigma Reactivo
-
+### <a id="paradigma-reactivo"></a>2. Paradigma Reactivo
 #### 2.1- Introducción
 
 La primera formalización del paradigma reactivo la encontramos en la publicación del Reactive Manifesto en 2013. En él se exponen los principios de diseño para un sistema reactivo o Reactive System que, a nivel de implementación, se concreta con el paradigma Reactive Programing. El target de los sistemas reactivos son sistemas distribuidos con alta concurrencia.
