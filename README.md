@@ -1,3 +1,3 @@
-#Hello
+#Curso de Paradigmas de programación
 
-[a relative link](teoria.md)
+[Teoría](teoria.md)
