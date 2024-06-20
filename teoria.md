@@ -15,7 +15,7 @@ multiparadigma se erige como ideal para que el alumno pueda realizar una transic
 
 ### 1. Programación funcional
 
-    1.1. Introducción
+    1.1. [Introducción](#intro)
 
         1.1.1. Qué es un paradigma de programación
         1.1.2. Origen de la programación funcional
@@ -40,6 +40,7 @@ multiparadigma se erige como ideal para que el alumno pueda realizar una transic
 
 ### Programación funcional
 
+<a id="intro"></a>
 #### 1.1- Introducción
 
 ##### 1.1.1- Qué es un paradigma de programación
