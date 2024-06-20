@@ -69,11 +69,11 @@ _Ejemplos:
         
       
 ##### 1.1.2. Origen de la programación funcional
-
+<div style="text-align: justify;">
 Lisp, el primer lenguage de programación funcional fué desarrollado en 1960 en el MIT. En aquellos años fueron creados también los primeros lenguajes orientados a objetos. Sin embargo, Alan Kay, al que se le otorga el acuñamiento del término, lo definia de una forma que se asemeja más al modelo de actores a cómo se definie la OOP hoy en día.
 Alan Kay definia la comunicación entre objetos como un intercambio de mensajes, no como una llamada a un método.
 https://adabeat.com/fp/the-history-of-functional-programming/
-
+</div>
  
  
 
@@ -94,7 +94,7 @@ sequenceDiagram
 
 
 ***Saliendo del paradigma convencional***
-
+<div style="text-align: justify;">
 El paradigma de programación más extendido es el de OOP con un modelo de concurrencia basado en Threads ( o light threads/fibers) y utilizando RPC.
 
 El problema de esta combinación viene con la escalabilidad. Definimos escalabilidad como la capacidad de una aplicación o sistema de hacer frente a un incremento de demanda manteniendo el tiempo de respuesta.
@@ -131,14 +131,14 @@ Ya no tenemos una doble API para scale up y scale out.
 ***Aislamiento de fallos****: Al ser el actor la unidad básica de computación, pueden ocurrir fallos o excepciones en su lógica. Un fallo no controlado en un actor lo para y notifica a su supervisor que aplicará la lógica de gestión de errores. El fallo queda, sin embargo aislado, no se propaga por el sistema como una excepción a través de la pila de llamadas.
 
 ***Bajo acoplamiento***: El intercambio de mensajes de forma asíncrona entre las unidades de computacón da lugar a sistemas mucho menos acoplados que los que produce la orientación a objetos donde un objeto ejecuta el método de otro a través de una instancia.
-
+</div>
 
 
 
 
 ### <a id="paradigma-reactivo"></a>2. Paradigma Reactivo
 #### 2.1- Introducción
-
+<div style="text-align: justify;">
 La primera formalización del paradigma reactivo la encontramos en la publicación del Reactive Manifesto en 2013. En él se exponen los principios de diseño para un sistema reactivo o Reactive System que, a nivel de implementación, se concreta con el paradigma Reactive Programing. El target de los sistemas reactivos son sistemas distribuidos con alta concurrencia.
 
 
@@ -152,10 +152,10 @@ El driver principal de los sistemas reactivos es la responsividad Responsiveness
 - Responsive bajo carga (Elástico): El sistema debe mantener la capacidad de respuesta con altas cargas de trabajo.
 
 El Reactive Manifesto prescribe que para conseguir estas propiedades, necesitamos que el sistema sea Message-driven.
-
+</div>
 
 #### 2.2- Reactive Programming
-
+<div style="text-align: justify;">
 Es un subconjunto de Asynchronous Programming.
 
 Asynchronous Programming: Modelo de concurrencia donde un conjunto de instrucciones, como una llamada a una función, se ejecutan de forma que no bloqueen el flujo de ejecución principal esperando su finalización. Por el contrario, la finalización de una ejecución asíncrona impactará en el flujo principal mediante la ejecución de una función de callback.
@@ -185,7 +185,7 @@ Así pues Reactive Programing se basa en la programación asíncrona y orientada
     - A nivel de nodo del cluster: Actor Rebalancing en sistemas de actores con Actor   Sharding (Kubernetes como pareja de baile)
 
 Vemos que la resiliencia va más allá de la toleráncia a fallos. No se trata de que ante fallos el sistema continue funcionando de forma degradada sino que el sistema se recupere.
-
+</div>
 
 
 **Implementaciones:** Akka/Pekko en Scala y Akka.Net en c# son implementaciones de un ReactiveSystem basado en el Modelo de Actores.
