@@ -1,3 +1,3 @@
-#Curso de Paradigmas de programación
+# Curso de Paradigmas de programación
 
 [Teoría](teoria.md)
