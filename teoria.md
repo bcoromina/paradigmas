@@ -96,20 +96,28 @@ sequenceDiagram
 ***Saliendo del paradigma convencional***
 <div style="text-align: justify;">
 El paradigma de programación más extendido es el de OOP con un modelo de concurrencia basado en Threads ( o light threads/fibers) y utilizando RPC.
+</div>
 
+<div style="text-align: justify;">
 El problema de esta combinación viene con la escalabilidad. Definimos escalabilidad como la capacidad de una aplicación o sistema de hacer frente a un incremento de demanda manteniendo el tiempo de respuesta.
 Un sistema puede escalar a dos niveles:
+</div>
 - *scale up*(vertical): utilización de más CPUs dentro de la misma máquina
 - *scale out*(horizontal): añadiendo máquinas o nodos al sistema distribuido
 
+<div style="text-align: justify;">
 La concurrencia es un medio para conseguir escalabilidad. Si tengo que ejecutar dos compuntaciones incorreladas, las ejecuto "al mismo tiempo" (en paralelo o de forma entrelazada).
-
+</div>
+<div style="text-align: justify;">
 Ante un incremento de la demanda es deseable un augmento de los recursos requeridos con una relación lineal o inferior. Además, la relación entre demanda y complejidad de la aplicación queremos que mantenga un buen equilibrio.
-
+</div>
+<div style="text-align: justify;">
 El paradigma convencional utiliza Threads para scale up y RPC para scale out.
 RPC parte de la base que una llamada a través de la red no és diferente a una llamada en la misma máquina. Si se realiza en modo síncrono va a bloquear el thread que hace la llamada, con lo que vamos a hacer un uso poco eficiente de los recursos. Si hacemos una llamada asíncrona, tendremos que especificar una función de callback lo que añade complejidad a la aplicación. Puedes acabar con un callback hell si en la callback hacer otra llamada que necesita su callback, etc...
-
+</div>
+<div style="text-align: justify;">
 Otro problema de este paradigma es que obtenemos un código en el que se mezclan contínuamente las dos abstracciones dirigidas a cada tipo de scalabilidad. Acabas hardcodeando qué partes de tu aplicación van a utilizar Threads para scale up y cuales van a utilizar RPC para scale out.
+</div>
 
 El modelo de actores proporciona una abstracción única para concurrencia y escalabilidad.
 
@@ -119,18 +127,23 @@ El modelo de actores proporciona una abstracción única para concurrencia y esc
   - Contiene estado que puede ser modificado en base a los mmensajes recibidos.
   - Puede mandar mensajes a otros actores
   - Puede crear otros actores generando un árbol jerárquico y manejando su ciclo de vida. Si un actor peta, su supervisor es notificado y puede decidir qué acciones aplicar.
-  
+  <div style="text-align: justify;">
 El modelo de concurrencia utilizado consiste en un único thread (o pool de threads) que mediante un scheduler va ejecutando cada actor.
 Por ejecutar un actor se entiende comprovar si tiene mensajes en la cola y llamar a la lógica de proceso associada. Así pues, un solo thread es compartido por varios actores con lo que un actor no debe contener código bloqueante ya que bloquearía la ejecución de otros actores.
-
+  </div>
+  <div style="text-align: justify;">
 Un actor tiene una dirección tipo el path de un fichero que lo localiza en el árbol jerárquico y permite localizarlo para mandar-le mensajes. En el caso de un sistema distribuido formado con varios nodos en el que se ejecuta un sistema de actores, la localización de un actor en concreto en el cluster es transparente. Es decir, en el momento de mmandar un mensaje a un actor se utiliza la misma API tanto si el actor esta en la misma máquina o está en remoto.
-
+  </div>
 Ya no tenemos una doble API para scale up y scale out.
 
 
-***Aislamiento de fallos****: Al ser el actor la unidad básica de computación, pueden ocurrir fallos o excepciones en su lógica. Un fallo no controlado en un actor lo para y notifica a su supervisor que aplicará la lógica de gestión de errores. El fallo queda, sin embargo aislado, no se propaga por el sistema como una excepción a través de la pila de llamadas.
-
-***Bajo acoplamiento***: El intercambio de mensajes de forma asíncrona entre las unidades de computacón da lugar a sistemas mucho menos acoplados que los que produce la orientación a objetos donde un objeto ejecuta el método de otro a través de una instancia.
+***Aislamiento de fallos****: 
+<div style="text-align: justify;">
+Al ser el actor la unidad básica de computación, pueden ocurrir fallos o excepciones en su lógica. Un fallo no controlado en un actor lo para y notifica a su supervisor que aplicará la lógica de gestión de errores. El fallo queda, sin embargo aislado, no se propaga por el sistema como una excepción a través de la pila de llamadas.
+</div>
+***Bajo acoplamiento***: 
+<div style="text-align: justify;">
+El intercambio de mensajes de forma asíncrona entre las unidades de computacón da lugar a sistemas mucho menos acoplados que los que produce la orientación a objetos donde un objeto ejecuta el método de otro a través de una instancia.
 </div>
 
 
@@ -140,7 +153,7 @@ Ya no tenemos una doble API para scale up y scale out.
 #### 2.1- Introducción
 <div style="text-align: justify;">
 La primera formalización del paradigma reactivo la encontramos en la publicación del Reactive Manifesto en 2013. En él se exponen los principios de diseño para un sistema reactivo o Reactive System que, a nivel de implementación, se concreta con el paradigma Reactive Programing. El target de los sistemas reactivos son sistemas distribuidos con alta concurrencia.
-
+</div>
 
 - Reactive Systems: Arquitectura y diseño
 - Reactive Programming: Declarativo y vasado en eventos
@@ -158,7 +171,9 @@ El Reactive Manifesto prescribe que para conseguir estas propiedades, necesitamo
 <div style="text-align: justify;">
 Es un subconjunto de Asynchronous Programming.
 
+<div style="text-align: justify;">
 Asynchronous Programming: Modelo de concurrencia donde un conjunto de instrucciones, como una llamada a una función, se ejecutan de forma que no bloqueen el flujo de ejecución principal esperando su finalización. Por el contrario, la finalización de una ejecución asíncrona impactará en el flujo principal mediante la ejecución de una función de callback.
+</div>
 
 Asynchronous Programing simplemente hace énfasis en la ejecución asíncrona (no bloqueante) de computaciones dentro de un programa. 
 
@@ -173,9 +188,9 @@ Modelos de concurrencia:
 - Corutinas (Kotlin): El compilador trozea nuestra función en trozos etiquetados y los ejecuta de forma concurrente con otras corrutinas. Dentro de una misma corutina el control de ejecución de los trozes se realiza por continuations.
 
 - Go routines, JVM Virtual threads,....
-
+<div style="text-align: justify;">
 La **asincronía** es una forma de implementar un sistema concurrente. Hace referéncia a la habilidad de un sistema para ejecutar una tarea y continuar con la ejecución de otra sin que la primera haya acabado. La ejecución de tareas se ejecuta de forma no bloqueante.
-
+</div>
 
 
 Así pues Reactive Programing se basa en la programación asíncrona y orientada a mensajes: Modelo de Actores
@@ -185,7 +200,7 @@ Así pues Reactive Programing se basa en la programación asíncrona y orientada
     - A nivel de nodo del cluster: Actor Rebalancing en sistemas de actores con Actor   Sharding (Kubernetes como pareja de baile)
 
 Vemos que la resiliencia va más allá de la toleráncia a fallos. No se trata de que ante fallos el sistema continue funcionando de forma degradada sino que el sistema se recupere.
-</div>
+
 
 
 **Implementaciones:** Akka/Pekko en Scala y Akka.Net en c# son implementaciones de un ReactiveSystem basado en el Modelo de Actores.
